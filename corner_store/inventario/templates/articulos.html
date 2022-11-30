@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block page_content %}
+{% block content %}
+<div class="container-sec container">
+    <a href="{% url 'articulo_new' %}" class="btn btn-primary btn-lg btn-block active" role="button" aria-pressed="true">Agregar Articulo</a>
+    
+</div>
+<hr>
+<div class="container-sec container">
+    {% if articulos %}
+    <div class="row row-cols-3">
+        {% for articulo in articulos %}
+        <div class="col">
+            <div class="card border-dark mb-3" style="width: 18rem;">
+                <img src={{ articulo.producto.foto.url }} class="card-img-top" alt="...">
+                <div class="card-body text-dark">
+                    <h3 class="card-title">{{articulo.producto.nombre}} - {{articulo.producto.marca}}</h3>
+                    <h5 class="card-text">Descripcion: {{articulo.producto.tipo}}, {{articulo.producto.talla}}, {{articulo.producto.color}}</h5>
+                    <p class="card-text">Precio: {{articulo.producto.precio}}</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">En venta </li>
+                    <li class="list-group-item">{{articulo.codigo}}</li>
+                    <a href="{% url 'vender_articulo' articulo.codigo %}" class="btn btn-secondary btn-sm active" role="button" aria-pressed="true">Vender Articulo</a>
+                </ul>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <h1 class="display-4">No se encuentran articulos registrados</h1>
+    {% endif %}
+</div>
+
+{% endblock %}
+{% endblock %}

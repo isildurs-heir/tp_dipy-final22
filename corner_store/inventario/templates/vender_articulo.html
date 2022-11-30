@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<br>
+<br>
+<div class="container-sec">
+    <div class="container">
+        <div class="row row-cols-2">
+            <div class="col">
+                <div class="card border-dark mb-3" style="width: 18rem;">
+                    <img src={{ articulo.producto.foto.url }} class="card-img-top" alt="...">
+                    <div class="card-body text-dark">
+                        <h3 class="card-title">{{articulo.producto.nombre}} - {{articulo.producto.marca}}</h3>
+                        <h5 class="card-text">Descripcion: {{articulo.producto.tipo}}, {{articulo.producto.talla}},
+                            {{articulo.producto.color}}</h5>
+                        <p class="card-text">Precio: {{articulo.producto.precio}}</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">{{articulo.codigo}}</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="formulario col-6">
+                <h2>Venta</h2>
+                <hr>
+                <form method="POST" enctype="multipart/form-data" novalidate>
+                    {% csrf_token %}
+                    <table>{{ formulario|crispy }}</table>
+                    <hr>
+                    <div class="d-flex justify-content-end">
+
+                        <a href="{% url 'articulos' %}" class="btn btn-secondary btn-sm active" role="button"
+                            aria-pressed="true">Cancelar</a>
+                        &nbsp;
+                        <button type="submit" class="save btn btn-primary">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

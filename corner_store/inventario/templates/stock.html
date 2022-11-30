@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block page_content %}
+{% block content %}
+<div class="container-sec">
+    {% if productos %}
+    <table class="table table-striped table-bordered">
+        <thead class ="bg-primary">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Marca</th>
+                <th scope="col">Producto</th>
+                <th scope="col">Tipo</th>
+                <th scope="col">Talle</th>
+                <th scope="col">Color</th>
+                <th scope="col">En stock</th>
+                <th scope="col">Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+                {% for producto in productos %}
+                {% if producto.cantidad == 0 %}
+                <tr class="table-danger">
+                {% else %}
+                <tr>
+                {% endif %}
+                    <th scope="row">{{producto.id}}</th>
+                    <td>{{producto.marca}}</td>
+                    <td>{{producto.nombre}}</td>
+                    <td>{{producto.tipo}}</td>
+                    <td>{{producto.talla}}</td>
+                    <td>{{producto.color}}</td>
+                    <td>{{producto.cantidad}}</td>
+                    <td>
+                        <div class="container d-flex justify-content-center">
+                            <a class="btn btn-sm btn-secondary" href="{% url 'producto_update' producto.id %}">Editar</a>
+                            &nbsp;
+                            <a class="btn btn-sm btn-danger" href="" data-toggle="modal" data-target="#exampleModal{{producto.id}}">Eliminar</a>
+                            {% include 'delete_modal.html' %}
+                        </div>
+                    </td> 
+                </tr>
+                {% endfor %}
+            
+        </tbody>
+    </table>
+    {% else %}
+    <h1 class="display-4">No se encuentran productos en stock</h1>
+    {% endif %}
+    <div class="d-flex justify-content-end">
+        <a class="btn btn-sm btn-primary" href="" data-toggle="modal" data-target="#producto_new_modal">Nuevo Producto</a>
+        {% include 'producto_new_modal.html' %}
+    </div>
+</div>
+
+{% endblock %}
+{% endblock %}
+
+<!--{% url 'producto_update' producto.id %}-->

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block page_content %}
+{% block content %}
+<div class="container-sec container">
+    {% if vendidos %}
+    <div class="row row-cols-3">
+        {% for vendido in vendidos %}
+        <div class="col">
+            <div class="card border-dark mb-3" style="width: 18rem;">
+                <img src={{ vendido.producto.foto.url }} class="card-img-top" alt="...">
+                <div class="card-body text-dark">
+                    <h5 class="card-title">{{vendido.producto.nombre}} - {{vendido.producto.marca}}</h5>
+                    <p class="card-text">{{vendido.producto.descripcion}}</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Vendido el: {{vendido.compradoEl}}</li>
+                    <li class="list-group-item">Comprador: {{vendido.comprador}}</li>
+                    <li class="list-group-item">{{vendido.codigo}}</li>
+                </ul>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <h1 class="display-4">No se encuentran vendidos vendidos</h1>
+    {% endif %}
+</div>
+
+{% endblock %}
+{% endblock %}
