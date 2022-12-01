@@ -1,35 +1,35 @@
 {% extends "base.html" %}
 {% block page_content %}
+{% load static %}
 {% block content %}
-<div class="container-sec container">
-    {% if productos %}
-    <div class="row row-cols-3">
-        {% for producto in productos %}
-        <div class="col">
-            {% if producto.cantidad != 0 %}
-            <div class="card bg-light border-dark mb-3" style="width: 16rem;">
-            {% else %}
-            <div class="card bg-danger mb-3" style="width: 16rem;">
-            {% endif %}
-                <img src={{ producto.foto.url }} class="card-img-top" alt="...">
-                <div class="card-body text-dark">
-                    <h5 class="card-title">{{producto.nombre}} - {{producto.marca}}</h5>
-                    <p class="card-text">{{producto.descripcion}}</p>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">En stock: {{producto.cantidad}} unidades</li>
-                    <li class="list-group-item">Tipo: {{producto.tipo}}</li>
-                    <li class="list-group-item">Talla: {{producto.talla}}</li>
-                    <li class="list-group-item">Color: {{producto.color}}</li>
-                    <li class="list-group-item">Precio: {{producto.precio}}</li>
-                </ul>
+<link rel="stylesheet" href="{% static 'css/lista_productos_style.css' %}">
+<div class="container-fluid" style="margin-top: 58px">
+    <div class="row contenedor_row justify-content-center">
+        <div class="col-3 filtros_seccion">
+            <h1>Filtros</h1>
+            <form class="form_12" method="get">
+                {% csrf_token %}
+                {{ lista_productos.form }}
+                <button class="submit_bt btn btn-primary btn-lg" type="submit">Filtrar</button>
+            </form>
+        </div>
+        <div class="col-8 productos_seccion">
+            <div class="card-deck"> 
+                {% for i in lista_productos.qs %}
+                    <div class="card" style="min-width:250px;max-width:500px;">
+                        <img class="card-img-top" src="{{i.foto.url}}" >
+                        <div class="card-body">
+                            <h1 class="card-title">{{i.nombre}} - {{i.marca}}</h1>
+                            <h6 class="card-subtitle">{{i.tipo}}, {{i.talla}}, {{i.color}}</h6>
+                            <a href="{{i.get_absolute_url}}" class="btn btn-primary">Ver producto</a>
+                        </div>
+                    </div>
+                
+                {% endfor %}
             </div>
         </div>
-        {% endfor %}
     </div>
-    {% else %}
-    <h1 class="display-4">No se encuentran productos en stock</h1>
-    {% endif %}
+    
 </div>
 {% endblock %}
 {% endblock %}

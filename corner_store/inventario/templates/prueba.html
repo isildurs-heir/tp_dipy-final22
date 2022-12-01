@@ -1,0 +1,30 @@
+<div class="container-sec container">
+    {% if productos %}
+    <div class="row row-cols-3">
+        {% for producto in productos %}
+        <div class="col">
+            {% if producto.cantidad != 0 %}
+            <div class="card bg-light border-dark mb-3" style="width: 16rem;">
+            {% else %}
+            <div class="card bg-danger mb-3" style="width: 16rem;">
+            {% endif %}
+                <img src={{ producto.foto.url }} class="card-img-top" alt="...">
+                <div class="card-body text-dark">
+                    <h5 class="card-title">{{producto.nombre}} - {{producto.marca}}</h5>
+                    <p class="card-text">{{producto.descripcion}}</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">En stock: {{producto.cantidad}} unidades</li>
+                    <li class="list-group-item">Tipo: {{producto.tipo}}</li>
+                    <li class="list-group-item">Talla: {{producto.talla}}</li>
+                    <li class="list-group-item">Color: {{producto.color}}</li>
+                    <li class="list-group-item">Precio: {{producto.precio}}</li>
+                </ul>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <h1 class="display-4">No se encuentran productos en stock</h1>
+    {% endif %}
+</div>

@@ -1,0 +1,15 @@
+
+
+.container-pri{
+    width:95%;
+    position: relative;
+    margin: auto;
+    
+}
+
+.container-sec{
+    padding-top:20px;
+    width:80%;
+    position: relative;
+    margin: auto;
+}

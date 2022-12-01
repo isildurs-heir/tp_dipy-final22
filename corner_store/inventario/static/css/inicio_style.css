@@ -1,0 +1,57 @@
+.carousel-caption h5 {
+    font-size: 2rem;
+    font-weight: 1000;
+}
+.form_1 {
+    padding: 10px 20px;
+}
+.input_cont {
+    text-align: center;
+}
+
+.input_todo {
+    background-image: url("../img/iconos/cat_todo.png");
+}
+.input_fem {
+    background-image: url("../img/iconos/cat_mujer.png");
+}
+.input_unisex {
+    background-image: url("../img/iconos/cat_unisex.png");
+}
+.input_masc {
+    background-image: url("../img/iconos/cat_hombre.png");
+}
+
+.input_todo:hover {
+    cursor: default;
+    background-color: rgba(255, 255, 255, 0.322);
+    background-blend-mode:lighten;
+}
+.input_fem:hover {
+    background-color: rgba(255, 255, 255, 0.322);
+    background-blend-mode:lighten;
+}
+.input_masc:hover {
+    background-color: rgba(255, 255, 255, 0.322);
+    background-blend-mode:lighten;
+}
+.input_unisex:hover {
+    background-color: rgba(255, 255, 255, 0.322);
+    background-blend-mode:lighten;
+}
+.input_cont input {
+    
+    background-size:cover;
+    background-color: #ff000000;
+    color:#ff000000;
+    border: 0px;
+    object-fit: fill;
+    margin: 0px 20px;
+    width: 100px;
+    height: 100px;
+}
+.form_1 h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    text-align: center;
+}

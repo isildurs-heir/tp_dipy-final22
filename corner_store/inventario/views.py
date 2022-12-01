@@ -3,6 +3,7 @@ from django.views import generic
 from inventario.models import *
 from inventario.forms import *
 from tienda.models import *
+from inventario.filters import FiltroProductos
 
 # Create your views here.
 
@@ -138,3 +139,23 @@ def vender_articulo(request,pk):
         formulario = VendidoForm()
         articulo = Articulo.objects.get(pk = pk)
     return render(request, 'vender_articulo.html',{'formulario':formulario,'articulo':articulo})
+
+def listaProductos(request):
+    productos = Producto.objects.all()
+
+    lista_productos = FiltroProductos(request.GET,queryset=productos)
+
+    context = {
+        'lista_productos' : lista_productos
+    }
+
+    return render(request,'detalle.html',context)
+
+def productoPK(request,pk):
+    producto = Producto.objects.get(pk=pk)
+    
+    context = {
+        'producto':producto
+    }
+
+    return render(request,'producto_pk.html',context)

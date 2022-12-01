@@ -25,6 +25,10 @@ class ArticuloForm(forms.ModelForm):
         producto = self.cleaned_data.get('producto')
         if producto.cantidad == 0:
             self.errors['producto'] = self.error_class(['El producto seleccionado se encuentra sin stock'])
+        else:
+            cntArticulos = Articulo.objects.all().filter(producto = producto).count()
+            if cntArticulos == producto.cantidad:
+                self.errors['producto'] = self.error_class(['La cantidad de articulos disponibles no puede superar la cantidad del producto en stock'])
         return self.cleaned_data
     
 class VendidoForm(forms.ModelForm):

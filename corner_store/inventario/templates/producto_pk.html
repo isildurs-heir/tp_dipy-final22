@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block Titulo %}
+    <title>{{producto.nombre}}</title>
+{% endblock %}
+
+{% block content %}
+
+    <div class="container" style="margin-top: 58px;">
+        <div class="row justify-content-md-center">
+            <div class="col col-6">
+                <img src="{{producto.foto.url}}" class="img-fluid img-thumbnail">
+            </div>
+            <div class="col col-3">
+                <h1>{{producto.nombre}}</h1>
+                <h2>$ {{producto.precio}}</h2>
+                <h2>Descripcion: </h2>
+                <p>{{producto.descripcion}}</p>
+                
+                <h6>Tipo: {{producto.tipo.nombre}}</h6>
+                
+                
+            </div>
+        </div>
+    </div>
+{% endblock %}

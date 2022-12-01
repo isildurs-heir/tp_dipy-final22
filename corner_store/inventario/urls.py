@@ -6,8 +6,8 @@ urlpatterns = [
     path('stock/',views.stock,name='stock'),
     path('vendidos/',views.vendidos,name='vendidos'),
     path('articulos/',views.ArticuloListView.as_view(),name='articulos'),
-    path('detalle/',views.ProductListView.as_view(),name='detalle'),
-
+    path('detalle/',views.listaProductos,name='detalle'),
+    path('producto/<int:pk>',views.productoPK,name='producto'),
     path('articulos/new',views.articulo_new,name='articulo_new'),
     path('articulo/venta/<pk>',views.vender_articulo,name='vender_articulo'),
     

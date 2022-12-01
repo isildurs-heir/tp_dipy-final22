@@ -1,6 +1,7 @@
 from django.db import models
 import uuid
 from datetime import datetime
+from django.urls import reverse
 
 # Create your models here.
 
