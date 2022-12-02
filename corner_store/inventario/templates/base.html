@@ -28,6 +28,7 @@
     <!-- Add additional CSS in static file -->
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/cs-skin-elastic' %}">
 </head>
 
 <body>
@@ -54,6 +55,19 @@
                             <a class="nav-link active" href="{% url 'detalle' %}">Detalle</a>
                         </li>
                     </ul>
+                </div>
+                <div class="top-right">
+                    <div class="header-menu">
+                      <div class="user-area dropdown float-right">
+                        <a href="" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <img class="user-avatar rounded-circle" src="{% static 'img/admin.png' %}" alt="User Avatar" width="35" height="35">
+                        </a>
+                        <div class="user-menu dropdown-content">
+                          <a class="nav-link" href="{% url 'login' %}"><i class="fa fa-power -on"></i>Iniciar Sesion</a>
+                          <a class="nav-link" href="{% url 'logout' %}"><i class="fa fa-power -off"></i>Cerrar Sesion</a>
+                        </div>
+                      </div> 
+                    </div>
                 </div>
             </nav>
         </div>

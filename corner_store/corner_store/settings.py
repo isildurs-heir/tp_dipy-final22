@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
-
+from django.urls import reverse_lazy
 from pathlib import Path
 import os
 
@@ -115,6 +115,9 @@ USE_I18N = True
 
 USE_TZ = True
 
+
+LOGIN_REDIRECT_URL = reverse_lazy('stock')
+LOGOUT_REDIRECT_URL = reverse_lazy('home')
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
